@@ -1,0 +1,61 @@
+import {Injectable, EventEmitter} from 'angular2/core';
+
+const electron = require('electron');
+const ipc = electron.ipcRenderer;
+
+/*export interface Result {
+  videoId: string;
+  title: string;
+  thumbnail: string;
+  channel: string;
+}*/
+
+@Injectable()
+export class MainService{
+  
+  _remitter : EventEmitter<any>;
+  resultlistcontent : Object[] = [];
+  
+  _pemitter : EventEmitter<any>;
+  toplay : Object;
+  
+  constructor() {
+    
+    this._remitter = new EventEmitter();
+    this._remitter.emit(null);
+    
+    this._pemitter = new EventEmitter();
+    this._pemitter.emit(null);
+    
+    //this.resultlistcontent.push({videoId: '', title: 'Resultlist...', thumbnail: '', channel: 'test'});
+    //this.resultlistcontent.push({videoId: "ZTVNgzvxoV0", title: "The Best Of Vocal Deep House Chill Out Music 2015", 
+                                  //thumbnail: "https://i.ytimg.com/vi/ZTVNgzvxoV0/default.jpg", channel: 'test'});
+    
+    ipc.on('search-result', (event, arg) => {
+        this.resultlistcontent = [];
+        for (var i = 0; i < arg.pageInfo.resultsPerPage; i ++) {
+          var tmpid = arg.items[i].id;
+          var tmpsnip = arg.items[i].snippet;
+          var titlelong = tmpsnip.title;
+          if (titlelong.length > 40) {
+            titlelong = titlelong.substring(0, 37) + '...';
+          }
+          this.resultlistcontent.push( { videoId: tmpid.videoId, 
+                                  title: titlelong, 
+                                  thumbnail: tmpsnip.thumbnails.default.url, 
+                                  channel: tmpsnip.channelTitle});
+        }
+        this._remitter.next({"id": "yresult", "data" : this.resultlistcontent});
+      })
+  }
+  
+  getList(){
+    return this.resultlistcontent;
+  }
+  
+  playAudio() {
+    console.log("mainservice: " + this.toplay);
+    this._remitter.next({"id": "playaudio", "data" : this.toplay});
+  }
+  
+}

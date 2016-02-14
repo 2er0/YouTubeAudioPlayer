@@ -1,0 +1,11 @@
+aside {
+  height: 100%; 
+  margin-left: 5px; 
+  display: table; 
+  width: 100%;
+}
+
+.sidecontent {
+  overflow: auto; 
+  max-height: calc(100% - 82px);
+}

@@ -1,0 +1,37 @@
+{
+  "name": "nodeyt",
+  "version": "0.0.1",
+  "description": "A small youtube-musik player",
+  "main": "app",
+  "engines": {
+    "node": ">= 4.2.1 <= 5",
+    "npm": ">= 3"
+  },
+  "scripts": {
+    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
+    "watch": "webpack --watch --progress --profile --colors --display-error-details --display-cached",
+    "electron": "electron app"
+  },
+  "dependencies": {
+    "googleapis": "~2.1.7",
+    "angular2": "2.0.0-beta.0",
+    "zone.js": "^0.5.10",
+    "bootstrap": "^3.3.6",
+    "gulp": "^3.9.0",
+    "es6-promise": "^3.0.2",
+    "es6-shim": "~0.33.3",
+    "es7-reflect-metadata": "^1.2.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "ng2-material": "~0.1.4",
+    "webpack-target-electron-renderer": "~0.3.0"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.0",
+    "es6-shim": "^0.33.3",
+    "ts-loader": "^0.7.2",
+    "typescript": "^1.7.3",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  }
+}

@@ -1,0 +1,33 @@
+<div id="ResultContainer">
+  <img *ngIf="tutorial" src="./startpic.svg" height="193" width="439">
+  <md-list>
+    <!-- for each result item display pic, title and channel on start 456x210 -->
+    <md-list-item class="md-2-line" *ngFor="#result of resultlistcontent; #i = index" [model]="result">
+      
+      <img [src]="result.thumbnail" (click)="playItem(result)" class="md-avatar pointer" alt="{{result.videoId}}"/>
+      <div class="md-list-item-text" layout="column">
+        <h3 (click)="playItem(result)" class="pointer"> {{ result.title }} </h3>
+        <p (click)="playItem(result)" class="pointer"> {{ result.channel }} </p>
+        
+        <!-- if logged in display add button -->
+        <button md-button *ngIf="playlists && !result.show" (click)="addTo(result)" class="md-icon-button md-primary" aria-label="Settings">
+          <i class="material-icons">add</i>
+        </button>
+        <button md-button *ngIf="playlists && result.show" (click)="close(result)" class="md-icon-button md-primary" aria-label="Settings">
+          <i class="material-icons">remove</i>
+        </button>
+        
+        <!-- add button pressed - display playlists -->
+        <ul *ngIf="playlists && result.show" id="playlistadd">
+          <li *ngFor="#playlist of playlistcontent; #j = index" (click)="addToList(result, playlist)">
+            <span>
+              {{ playlist.title }}
+            </span>
+          </li>
+        </ul>
+        
+      </div>
+    </md-list-item> 
+    <!-- end for -->
+  </md-list>
+</div>

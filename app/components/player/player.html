@@ -1,0 +1,72 @@
+<div style="height: 70px; width: 100%; bottom: 0px;">
+  
+  <div *ngIf="playeraktive">
+    
+    <button md-button (click)="jumpbackward()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Replay 30s">
+      <i class="material-icons">replay_30</i>
+    </button>
+    
+    <button md-button *ngIf="!playstop" (click)="play()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Play">
+      <i class="material-icons">play_circle_filled</i>
+    </button>
+    <button md-button *ngIf="playstop" (click)="pause()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Pause">
+      <i class="material-icons">pause_circle_filled</i>
+    </button>
+    <button md-button (click)="jumpforward()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Jump 30s forward">
+      <i class="material-icons">forward_30</i>
+    </button>
+    
+    <button md-button *ngIf="playlist" (click)="prev()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Play previous">
+      <i class="material-icons">skip_previous</i>
+    </button>
+    <button md-button *ngIf="playlist" (click)="next()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Play next">
+      <i class="material-icons">skip_next</i>
+    </button>
+    <button md-button *ngIf="!shuffle && playlist" (click)="shufflePlaylist()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Shuffle Playlist">
+      <i class="material-icons">shuffle</i>
+    </button>
+    <button md-button *ngIf="shuffle && playlist" (click)="shufflePlaylist()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Undo Shuffle Playlist">
+      <i class="material-icons">shuffle</i>
+    </button>
+    
+    |
+    <button md-button *ngIf="!mute" (click)="volmute()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Mute volume">
+      <i class="material-icons">volume_up</i>
+    </button>
+    <button md-button *ngIf="mute" (click)="unvolmute()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Unmute volume">
+      <i class="material-icons">volume_mute</i>
+    </button>
+    
+    <button md-button (click)="setVolumeDown()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Set volume down">
+      <i class="material-icons">remove_circle</i>
+    </button>
+    <button md-button (click)="setVolumeUp()" class="md-icon-button md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Set volume up">
+      <i class="material-icons">add_circle</i>
+    </button>
+    
+    
+    <div *ngIf="!errorbox" id="contentplaybox">
+      <img id="currentplay" [src]="thumbnail" class="md-avatar"/>
+      <div id="playtitle">{{title}}</div>
+    </div>
+    <div *ngIf="errorbox" id="contentplaybox">
+      {{errorcontent}}
+    </div>
+    
+  </div>
+  
+  <div id="ytcontent" style="display: none; margin-top: 30px;">
+  </div>
+</div>

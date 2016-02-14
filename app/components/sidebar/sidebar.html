@@ -1,0 +1,41 @@
+<aside>
+      
+  <div class="aside-row" id="login">
+    <button md-fab *ngIf="!login" (click)="loadlogin()" class="md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Login">
+      <i class="material-icons">perm_identity</i>
+    </button>
+    <button md-fab *ngIf="login" (click)="handleprof()" class="md-primary" 
+            aria-label="Settings" data-toggle="tooltip" title="Logout & more">
+      <img id="profilepic" [src]="profilepic" class="md-avatar"/>
+    </button>
+    <hr>
+  </div>
+  
+  <div *ngIf="!handleprofile && login"  class="sidecontent">
+    <h4>Playlists:</h4>
+    <div class="aside-row-list" *ngFor="#item of playlists.items; #i = index" (click)="playList(item)">
+      {{item.snippet.title}}
+    </div>
+  </div>
+  <div *ngIf="handleprofile" class="sidecontent">
+    <div class="aside-row-list" (click)="handleprof()">
+      <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+    <div class="aside-row-list" (click)="reloadplaylists()">
+      <i class="material-icons">refresh</i>Playlists
+    </div>
+    <div class="aside-row-list" (click)="addPlaylist()">
+      <i class="material-icons">add</i>new Playlist
+    </div>
+    <div class="aside-row-list" *ngIf="displayadd">
+      <md-input-container class="md-block">
+        <input md-input id="addbox" #addbox (keyup.enter)="addList(addbox.value)" (keyup.escape)="cancelList()">
+      </md-input-container>
+    </div>
+    <div class="aside-row-list" (click)="logout()">
+      <i class="material-icons">power_settings_new</i>Logout
+    </div>
+  </div>
+  
+</aside>
