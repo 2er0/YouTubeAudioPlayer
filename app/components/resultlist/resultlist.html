@@ -11,7 +11,7 @@
         
         <!-- if logged in display add button -->
         <button md-button *ngIf="playlists && !result.show" (click)="addTo(result)" class="md-icon-button md-primary" aria-label="Settings">
-          <i class="material-icons">add</i>
+          <i class="material-icons">playlist_add</i>
         </button>
         <button md-button *ngIf="playlists && result.show" (click)="close(result)" class="md-icon-button md-primary" aria-label="Settings">
           <i class="material-icons">remove</i>
