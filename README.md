@@ -39,3 +39,15 @@ OR `electron-packager-interactive`
 ## How it works
 
 ![Struct](./README-Files/struct.png)
+
+
+## ToDo
+
+- Setup View (global over all)
+- Global Keyboard binding
+ - store & load to/from hotkeys file
+ - register hotkeys with nw.js (https://github.com/nwjs/nw.js/wiki/shortcut)
+- Get all Playlist and not only that which are owned by the user
+- Try to play all YouTube Videos - also that which are marked as not to play on a not YouTube page
+- Stream to ChromeCast/FireTV-Stick
+ - https://www.npmjs.com/package/chromecasts | https://github.com/mafintosh/playback
