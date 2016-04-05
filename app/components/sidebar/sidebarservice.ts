@@ -1,6 +1,7 @@
 import {Injectable, EventEmitter} from 'angular2/core';
 //import {ytscontent} from '../syscom';
 
+declare  function require(path: string) : any;
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 

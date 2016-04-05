@@ -1,4 +1,4 @@
-import {Component, View, NgZone, EventEmitter} from 'angular2/core';
+import {Component, NgZone, EventEmitter} from 'angular2/core';
 import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {NgIf} from 'angular2/common';
 import {SysCom, ytscontent} from '../syscom';
@@ -6,9 +6,7 @@ import {SysCom, ytscontent} from '../syscom';
 declare var YT:any; // Magic - enables to use YouTube Iframe API
 
 @Component({
-  selector: 'player'
-})
-@View({
+  selector: 'player',
   directives: [MATERIAL_DIRECTIVES, NgIf],
   templateUrl: 'components/player/player.html',
   styles: [`

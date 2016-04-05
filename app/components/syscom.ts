@@ -1,5 +1,6 @@
 import {Injectable, EventEmitter} from 'angular2/core';
 
+declare  function require(path: string) : any;
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 

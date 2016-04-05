@@ -1,17 +1,16 @@
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {NgIf, NgFor} from 'angular2/common';
 import {PlaylistService} from './sidebarservice';
 import {SysCom} from '../syscom';
 
+declare  function require(path: string) : any;
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 
 @Component({
-  selector: 'sidebar'//,
+  selector: 'sidebar',
   //providers: [PlaylistService]
-})
-@View({
   directives: [MATERIAL_DIRECTIVES, NgIf, NgFor],
   templateUrl: 'components/sidebar/sidebar.html',
   styleUrls: ['components/sidebar/sidebar.css']

@@ -1,17 +1,16 @@
-import {Component, View, NgZone, Output, EventEmitter} from 'angular2/core';
+import {Component, NgZone, Output, EventEmitter} from 'angular2/core';
 import {NgFor, NgIf} from 'angular2/common';
 import {MATERIAL_DIRECTIVES} from 'ng2-material/all';
 import {ResultService} from './resultservice';
 import {SysCom, ytscontent} from '../syscom';
 
+declare  function require(path: string) : any;
 const electron = require('electron');
 const ipc = electron.ipcRenderer;
 
 @Component({
-  selector: 'resultlist'//,
+  selector: 'resultlist',
   //providers: [ResultService]
-})
-@View({
   directives: [MATERIAL_DIRECTIVES, NgFor, NgIf],
   templateUrl: 'components/resultlist/resultlist.html',
   styleUrls: ['components/resultlist/resultlist.css']
