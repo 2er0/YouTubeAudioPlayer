@@ -26,7 +26,7 @@ export class Resultlist {
   playlistcontent : Object[] = [];  // available playlist after login
   
   playlists : boolean = false;      // enable add butten after logon
-  tutorial : boolean = true;
+  tutorial : boolean = true; 
   
   // get Services over constructor to current component
   constructor(result : ResultService, zone : NgZone, syscom : SysCom) {
@@ -54,6 +54,13 @@ export class Resultlist {
     })
   }
   
+  isEmpty() : boolean {
+    if (this.resultlistcontent.length == 0) { 
+      return true;
+    } else {
+      return false;
+    }
+  }
   // send clicked video infos to player component
   playItem(item : ytscontent) {
     this._syscom.playAudio(item);

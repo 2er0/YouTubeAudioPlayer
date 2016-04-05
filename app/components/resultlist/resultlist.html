@@ -1,5 +1,5 @@
 <div id="ResultContainer">
-  <img *ngIf="tutorial" src="./startpic.svg" height="193" width="439">
+  <img *ngIf="isEmpty()" src="./startpic.svg" height="193" width="439">
   <md-list>
     <!-- for each result item display pic, title and channel on start 456x210 -->
     <md-list-item class="md-2-line" *ngFor="#result of resultlistcontent; #i = index" [model]="result">
